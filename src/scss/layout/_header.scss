@@ -6,26 +6,35 @@
 
     h1 {
         color: v.$blanco;
+        text-align: center;
+        @include m.tablet {
+            margin: 0; //quita el espacio hacia abajo que trae el header por defecto
+        }
+    }
+    .contenido-header {
+        padding: 2rem;
+        @include m.tablet {
+            display: flex; //ubica horizontalmente
+            justify-content: space-between; //agrega espacio entre ambos elementos
+            align-items: center;
+        }
     }
 }
 
 .navegacion-principal {
-    background-color: red;
-    @include m.telefono {
-        background-color: blue;
-    }
     @include m.tablet {
-        background-color: cornflowerblue;
-    }
-    @include m.desktop {
-        background-color: darkgreen;
-    }
-    @include m.desktopXL {
-        background-color: white;
+        display: flex; //ubica las palabras line up, galeria y boletos de manera horizontal
+        gap: 2rem; //agrega espacio entre las 3 palabras
     }
     a {
+        display: block; //ubica verticalmente
+        text-align: center;
+        margin-bottom: 1rem;
         color: v.$blanco;
         font-size: 2.4rem;
+        @include m.tablet {
+            margin: 0;
+        }
 
         &:hover { //& elimina el espacio al compilar xq el codigo funciona unido a:hover
             color: v.$amarillo;
