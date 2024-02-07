@@ -28,14 +28,26 @@ function mostrarImagen(id) {
     const imagen = document.createElement('picture');
     imagen.innerHTML = `
         <source srcset="build/img/grande/${id}.avif" type="image/avif">
-        <source srcset="build/img/grande/${IdleDeadline}.webp" type="image/webp">
+        <source srcset="build/img/grande/${id}.webp" type="image/webp">
         <img loading="lazy" width="200" height="300" src="build/img/grande/${id}.jpg" alt="Imagen Galería">
     `;
 
+    //Crea el overlay con la imagen
     const overlay = document.createElement('DIV');
     overlay.appendChild(imagen);
     overlay.classList.add('overlay');
 
+    //Botón para cerrar el Modal (ventana)
+    const cerrarModal = document.createElement('P');
+    cerrarModal.textContent = 'X';
+    cerrarModal.classList.add('btn-cerrar');
+    cerrarModal.onclick = function() {
+        overlay.remove();
+    }
+
+    overlay.appendChild(cerrarModal);
+
+    //Agrega el overlay al HTML
     const body = document.querySelector('body');
     body.appendChild(overlay);
 }
